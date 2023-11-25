@@ -13,6 +13,7 @@ const Dashboard = ({ navigation }) => {
 
   const dispatch = useDispatch();
 
+  /** refresh function */
   const onRefresh = () => {
     setRefreshing(true);
 
@@ -22,11 +23,13 @@ const Dashboard = ({ navigation }) => {
     }, 2000);
   };
 
+  /** indices function */
   const getIndicesData = (data) => {
     const list = [...data];
     return [true, ...list];
   }
 
+  ///** side effects */
   useEffect(() => {
     StatusBar.setBarStyle("dark-content");
     StatusBar.setTranslucent(true);
@@ -43,6 +46,8 @@ const Dashboard = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.parent}>
       <View style={{ flex: 1 }}>
+
+        {/* nav bar */}
         <View style={styles.headWrap}>
           <Text style={{ marginLeft: 10, fontSize: 20, fontWeight: "bold", color: "#FA184E" }}>Ecom</Text>
 
@@ -65,6 +70,7 @@ const Dashboard = ({ navigation }) => {
           </View>
         </View>
 
+        {/* flatlist for rendering products */}
         {allProducts?.length ?
           <View style={{ marginTop: 10, flex: 1 }}>
             <FlatList
@@ -78,6 +84,7 @@ const Dashboard = ({ navigation }) => {
                 <>
                   {
                     typeof item === "boolean" && (
+                      /** pull down */
                       <View style={{ alignItems: "center", backgroundColor: "#e8e6e6", paddingVertical: 2, elevation: 4, marginHorizontal: 10 }}>
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: "center" }}>
                           <Image style={{ width: 13, height: 13, marginRight: 5 }} source={require("../../assets//icons/arrow-down-fill.png")} />
@@ -89,12 +96,14 @@ const Dashboard = ({ navigation }) => {
 
                   {
                     typeof item !== "boolean" && (
+                      /** product card */
                       <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("detailspage", { item: item })}>
                         <View style={{ flexDirection: "row", }}>
                           <View style={styles.leftBox}></View>
 
                           <View style={{ marginLeft: 20 }}>
                             <View style={{ alignItems: "flex-start", marginBottom: 4 }}>
+                              {/* title */}
                               <Text
                                 style={styles.title}
                               >
@@ -102,11 +111,14 @@ const Dashboard = ({ navigation }) => {
                               </Text>
                             </View>
 
+                            {/* price */}
                             <Text
                               style={{ color: "#6588E6", fontFamily: "Poppins-Medium", fontSize: 18, width: 180, marginBottom: 4 }}
                             >
                               ₹{item?.price}
                             </Text>
+
+                            {/* add to cart */}
                             <TouchableOpacity onPress={() => dispatch(addToCart(item))}>
                               <Text style={styles.addtocart} > Add to Cart</Text>
                             </TouchableOpacity>
@@ -114,11 +126,9 @@ const Dashboard = ({ navigation }) => {
 
                         </View>
 
+                        {/* product image */}
                         <TouchableOpacity
                           style={{
-                            borderWidth: 1,
-                            // borderRadius: 50,
-                            borderColor: "#58A263",
                             padding: 2,
                             backgroundColor: "#fff",
                             alignItems: "center",
@@ -126,7 +136,7 @@ const Dashboard = ({ navigation }) => {
                             marginRight: 10,
                           }}
                         >
-                          <Image style={{ width: 80, height: 80 }} source={{ uri: item?.thumbnail }} />
+                          <Image style={{ width: 80, height: 80, borderRadius: 10, }} source={{ uri: item?.thumbnail }} />
                         </TouchableOpacity>
                       </TouchableOpacity>
                     )
@@ -188,7 +198,6 @@ const styles = StyleSheet.create({
   },
   section: {
     marginHorizontal: 10,
-    // borderWidth: 1,
     marginTop: 20,
   },
   leftBox: {

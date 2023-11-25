@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { GETPRODUCTS } from '../api/api';
 import Toast from 'react-native-toast-message';
 
-
+/* function to get all products */
 export const getProducts = createAsyncThunk('/products', async ( payload,  { rejectWithValue }) => {
     try {
         const res = await GETPRODUCTS();
@@ -36,13 +36,12 @@ const UserSlice = createSlice({
         cart:[]
     },
     reducers: {
+        /** logout function */
         logOut(state, { payload }) {
             AsyncStorage.removeItem("@user");
             payload.replace("login");
         },
-        loginByAsync(state, { payload }) {
-            state.user = payload.data;
-        },
+        /** add to cart function */
         addToCart(state, {payload}){
             const data = [...state.cart];
             data.push(payload);
@@ -55,6 +54,7 @@ const UserSlice = createSlice({
         }
     },
     extraReducers: builder => {
+        /** states for getProducts */
         builder.addCase(getProducts.pending, (state, { payload }) => {
             state.status = true;
         })
@@ -68,5 +68,5 @@ const UserSlice = createSlice({
     }
 });
 
-export const { logOut, loginByAsync, addToCart } = UserSlice.actions;
+export const { logOut, addToCart } = UserSlice.actions;
 export default UserSlice.reducer;

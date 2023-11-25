@@ -15,6 +15,7 @@ const Login = ({ navigation }) => {
   const [show, setShow] = useState(false);
   const [formError, setFormError] = useState({});
 
+  /** validation function */
   const validateForm = () => {
     const error = {};
     const { username, password } = formValue;
@@ -29,11 +30,11 @@ const Login = ({ navigation }) => {
     return error;
   }
 
-
+  /** login handle function */
   const handleLogin = () => {
     const validationErrors = validateForm();
     setFormError(validationErrors);
-    AsyncStorage.setItem("@user", JSON.stringify({username: "user123", password: "1234567"}));
+    AsyncStorage.setItem("@user", JSON.stringify({ username: "user123", password: "1234567" }));
     if (Object.keys(validationErrors).length === 0) {
       if (formValue.username === "user123" && formValue.password === "1234567") {
         Toast.show({
@@ -71,6 +72,7 @@ const Login = ({ navigation }) => {
               <Text style={{ color: "#877A7A", fontSize: 16 }}>Please log in to continue</Text>
             </View>
 
+            {/* username */}
             <View style={{ marginHorizontal: 20, marginTop: 50, }}>
               <View style={styles.inputGrp}>
                 <TextInput
@@ -88,6 +90,7 @@ const Login = ({ navigation }) => {
                 : null
               }
 
+              {/* password */}
               <View style={[styles.inputGrp, { position: "relative", marginTop: 30, }]}>
                 <TextInput
                   style={styles.inputBox}
@@ -112,6 +115,7 @@ const Login = ({ navigation }) => {
               }
             </View>
 
+            {/* login button */}
             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", marginHorizontal: 20, marginTop: 50 }}>
               <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={{ color: "#fff", fontSize: 16 }}>Login</Text>

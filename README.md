@@ -46,34 +46,27 @@ If everything is set up _correctly_, you should see your new app running in your
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
+## App screens
 
-Now that you have successfully run the app, let's modify it.
+   1> splash screen
+   2> login screen with username and password.
+   3> dashboard which displays a list of products obtained from the api.
+      [API: DummyJSON - Fake REST API of JSON data for development]
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+## App Functionality
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+   1> This app has a basic authentication mechanism where the app accepts
+      username and password in the log in screen with proper toast notification & messages.
+   2> In dashboard a product list will be shown where  user taps on a product, navigate to a new screen that displays the full details of
+      that product.
+   3> Add to cart button When the user clicks to  add the item to the cart.
+   4> Added a "Refresh" button on the dashboard screen that fetches and updates the list of products
+      from the API.
+   5> Added pull-to-refresh functionality on the dashboard screen.
+   6> Implemented proper error handling with toast notification & error messages for API requests and display an error message if the data
+      cannot be fetched.
 
-## Congratulations! :tada:
+## App Credentials
 
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+   username : "user123"
+   password: "1234567"

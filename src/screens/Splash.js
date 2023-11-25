@@ -1,35 +1,27 @@
 import { StyleSheet, View, SafeAreaView, Text, StatusBar, ImageBackground } from 'react-native'
 import React, { useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useDispatch } from 'react-redux';
 import { loginByAsync } from '../services/slices/UserSlice';
 
 const Splash = ({ navigation }) => {
-    const dispatch = useDispatch();
 
     useEffect(() => {
         StatusBar.setTranslucent(true);
         StatusBar.setBackgroundColor('transparent');
+
+        /* function for auto login of user */ 
         const getLoginData = async () => {
             const user = await AsyncStorage.getItem("@user");
 
-            const user_details = { data: JSON.parse(user) }
-            // console.log("user =>", data.user_details, data.token);
-
+            const user_details = JSON.parse(user)
             setTimeout(() => {
-                if (user != null) {
-                    // console.log("from if", user);
-                    dispatch(loginByAsync(user_details));
+                if (user_details != null) {
                     navigation.replace("dashboard");
                 } else {
                     // console.log("from else", user);
-                    const withOutData = { data: null, token: null };
-                    dispatch(loginByAsync(withOutData));
                     navigation.replace("login");
                 }
             }, 2000);
-
-            // return clearTimeout(startPage);
         }
 
         getLoginData();
