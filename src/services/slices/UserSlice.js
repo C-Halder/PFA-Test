@@ -47,7 +47,6 @@ const UserSlice = createSlice({
             const data = [...state.cart];
             data.push(payload);
             state.cart = data;
-            console.log(state.cart);
             Toast.show({
                 type: "success",
                 text1: "Product added successfully",

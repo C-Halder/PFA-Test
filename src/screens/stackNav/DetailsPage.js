@@ -65,7 +65,7 @@ const DetailsPage = ({ navigation, route }) => {
                     paddingHorizontal: 5,
                     borderRadius: 3,
                     textAlign: "center",
-                    paddingVertical: 5,
+                    paddingVertical: 10,
                   }}>Add to Cart</Text>
                 </TouchableOpacity>
               </View>

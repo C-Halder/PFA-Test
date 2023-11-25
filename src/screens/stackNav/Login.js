@@ -11,7 +11,7 @@ const { width, height } = Dimensions.get("window");
 const Login = ({ navigation }) => {
   const { status } = useSelector(state => state.userSlice);
 
-  const [formValue, setFormValue] = useState({ username: "user123", password: "1234567" });
+  const [formValue, setFormValue] = useState({ username: "", password: "" });
   const [show, setShow] = useState(false);
   const [formError, setFormError] = useState({});
 
