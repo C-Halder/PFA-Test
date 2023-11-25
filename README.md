@@ -46,6 +46,9 @@ If everything is set up _correctly_, you should see your new app running in your
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
+## How to access the apk
+   path: "android/app/release/app-release.apk"
+   
 ## App screens
 
    1> splash screen
@@ -65,6 +68,7 @@ This is one way to run your app — you can also run it directly from within And
    5> Added pull-to-refresh functionality on the dashboard screen.
    6> Implemented proper error handling with toast notification & error messages for API requests and display an error message if the data
       cannot be fetched.
+
 
 ## App Credentials
 
